@@ -1,24 +1,15 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import './style.css';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+interface Pages {
+    [key: string]: () => Promise<any>;
+}
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+const pages: Pages = {
+    home: () => import('./pages/home/home.ts')
+}
+
+const namespace = window.location.pathname.split('/')[3];
+if ( pages[namespace] ) {
+      const { init } = await pages[namespace]();
+      init();
+}
