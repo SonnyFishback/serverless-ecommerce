@@ -7,10 +7,12 @@ interface Pages {
 
 (async () => {
   const pages: Pages = {
-    home: () => import("./pages/home/home.ts"),
+    home: () => import('./pages/home/home.ts'),
+    product: () => import('./pages/product/product.ts'),
+    cart: () => import('./pages/cart/cart.ts'),
   };
 
-  const root = window.location.pathname.split("/")[3];
+  const root = window.location.pathname.split('/')[3];
 
   if (!pages[root]) {
     return console.error(`Page ${root} not found.`);
