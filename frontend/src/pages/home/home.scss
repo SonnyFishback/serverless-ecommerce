@@ -1,0 +1,17 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 15px 5px;
+    background-color: rgb(26, 186, 255);
+}
+
+main {
+    min-height: 90vh;
+}
+
+.product {
+    border: solid black 1px;
+    margin: 20px;
+    padding: 5px;
+}
