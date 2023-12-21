@@ -1,3 +1,5 @@
+import './main.scss'
+
 interface Pages {
   [key: string]: () => Promise<any>;
 }
