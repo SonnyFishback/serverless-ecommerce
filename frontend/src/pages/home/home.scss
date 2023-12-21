@@ -1,9 +1,27 @@
+body {
+    background-color: cadetblue;
+}
+
 header {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 15px 5px;
-    background-color: rgb(26, 186, 255);
+    background-color: white;
+
+    input {
+        border: cadetblue solid 1px;
+        padding: 2px;
+    }
+
+    button {
+        background-color: cadetblue;
+        color: white;
+        border: none;
+        padding: 5px;
+        margin: 0 5px;
+        border-radius:5px;
+    }
 }
 
 main {
@@ -11,7 +29,7 @@ main {
 }
 
 .product {
-    border: solid black 1px;
+    background-color: white;
     margin: 20px;
     padding: 5px;
 }
