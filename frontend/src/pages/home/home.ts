@@ -1,3 +1,5 @@
 
 
-export const init = () => console.log('home page loaded');
+export const init = () => {
+    document.title = 'Homepage | E-Commerce'
+};
