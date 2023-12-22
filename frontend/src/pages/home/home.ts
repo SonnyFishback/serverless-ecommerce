@@ -1,16 +1,22 @@
 import './home.scss';
 
+/**
+ * Get available products from api
+ * @returns {}
+ */
 const products = async () => {
     try {
-        const url = 'https://w4fduc83wb.execute-api.us-east-1.amazonaws.com/';
-        const options = {
-
-        }
+        const url = '/api/';
+        const options = {}
 
         const response = await fetch(url, options);
+        
+        if(!response.ok) {
+            throw new Error(`\n Status:${response?.status} \n Text: ${response?.statusText}`);
+        }
 
-    
-        console.log(response);
+        return await response.json();
+
     } catch (error) {
         console.error(error);
     }
@@ -22,4 +28,6 @@ export const init = async () => {
 
     // get products
    const data = await products()
+
+   console.log(data);
 };
