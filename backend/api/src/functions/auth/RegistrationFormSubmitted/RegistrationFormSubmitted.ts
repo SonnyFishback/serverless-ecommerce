@@ -4,14 +4,15 @@ export const handler = async (event) => {
       throw new Error('No body in request');
     }
 
-    let { body } = event;
-    body = JSON.parse(body);
+    const data = JSON.parse(event.body);
 
-    if (!body.email || !body.password) {
+    if (!data.email || !data.password) {
       throw new Error('Missing email or password');
     }
 
-    const { email, password } = body;
+    const { email, password } = data;
+
+
 
   } catch (error) {
     console.error(error);
