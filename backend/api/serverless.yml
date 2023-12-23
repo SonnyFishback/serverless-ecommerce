@@ -2,17 +2,18 @@ service: 'api'
 frameworkVersion: '3'
 
 provider:
-  name: aws
-  runtime: nodejs18.x
-  profile: sbx
+  name: 'aws'
+  runtime: 'nodejs18.x'
+  profile: 'sbx'
 
 plugins:
-  - serverless-esbuild
+  - 'serverless-esbuild'
+  # - 'serverless-domain-manager' #TODO: add custom domain for api.
 
 functions:
   api:
-    handler: index.handler
+    handler: 'index.handler'
     events:
       - httpApi:
-          path: /
-          method: get
+          path: '/'
+          method: 'get'
