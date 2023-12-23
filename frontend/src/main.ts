@@ -8,10 +8,12 @@ interface Pages {
 const handleRegistrationSubmission = async (event: Event) => {
   try {
     event.preventDefault();
-  const data = new FormData(event.target as HTMLFormElement);
-  const props = Object.fromEntries(data);
-  const { email, password } = props;
-  return await register(String(email), String(password));
+
+    const data = new FormData(event.target as HTMLFormElement);
+    const props = Object.fromEntries(data);
+    const { email, password } = props;
+
+    return await register(String(email), String(password));
   } catch (error) {
     console.error(error);
   }
@@ -33,6 +35,6 @@ const handleRegistrationSubmission = async (event: Event) => {
   }
 
   const form = document.querySelector('#registration-form');
-  form?.addEventListener('submit', handleRegistrationSubmission)
+  ( form && form instanceof HTMLFormElement ) && form.addEventListener('submit', handleRegistrationSubmission)
   
 })();
