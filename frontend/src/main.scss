@@ -1,1 +1,17 @@
 @use './$lib/scss/reset.scss';
+
+form {
+    display: flex;
+    flex-direction: column;
+    border: solid black 1px;
+    align-items: center;
+    width: fit-content;
+    input {
+        margin: 10px;
+        width: 200px;
+        height: 30px;
+        border-radius: 5px;
+        border: solid black 1px;
+        padding: 5px;
+    }
+}

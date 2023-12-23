@@ -13,7 +13,10 @@ const handleRegistrationSubmission = async (event: Event) => {
     const props = Object.fromEntries(data);
     const { email, password } = props;
 
-    return await register(String(email), String(password));
+    const registration = await register(String(email), String(password));
+    console.log(registration);
+    
+
   } catch (error) {
     console.error(error);
   }

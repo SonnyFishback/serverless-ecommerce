@@ -12,7 +12,11 @@ export const handler = async (event) => {
 
     const { email, password } = data;
 
-
+    
+    return {
+      statusCode: 200,
+      body: true
+    }
 
   } catch (error) {
     console.error(error);
