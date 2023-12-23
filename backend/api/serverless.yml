@@ -1,5 +1,6 @@
 service: 'api'
 frameworkVersion: '3'
+useDotenv: true
 
 provider:
   name: 'aws'
@@ -9,6 +10,10 @@ provider:
 plugins:
   - 'serverless-esbuild'
   # - 'serverless-domain-manager' #TODO: add custom domain for api.
+
+resources:
+  - ${file(./src/cf/database.yml)}
+  - ${file(./src/cf/frontend.yml)}
 
 functions:
 

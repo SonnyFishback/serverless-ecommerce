@@ -1,0 +1,73 @@
+---
+
+Resources:
+  
+  # Global database table
+    SystemTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: ${opt:stage}-${env:DOMAIN_NAME}-table
+        BillingMode: PAY_PER_REQUEST
+        PointInTimeRecoverySpecification:
+          PointInTimeRecoveryEnabled: true
+        SSESpecification:
+          SSEEnabled: true
+        KeySchema:
+          - AttributeName: PK
+            KeyType: HASH
+          - AttributeName: SK
+            KeyType: RANGE
+        AttributeDefinitions:
+          - AttributeName: PK
+            AttributeType: S
+          - AttributeName: SK
+            AttributeType: S
+          - AttributeName: GSI1PK
+            AttributeType: S
+          - AttributeName: GSI1SK
+            AttributeType: S
+          - AttributeName: GSI2PK
+            AttributeType: S
+          - AttributeName: GSI2SK
+            AttributeType: S
+          - AttributeName: GSI3PK
+            AttributeType: S
+          - AttributeName: GSI3SK
+            AttributeType: S
+        GlobalSecondaryIndexes:
+          - IndexName: GSI1PK
+            KeySchema:
+              - AttributeName: GSI1PK
+                KeyType: HASH
+              - AttributeName: GSI1SK
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+          - IndexName: GSI2PK
+            KeySchema:
+              - AttributeName: GSI2PK
+                KeyType: HASH
+              - AttributeName: GSI2SK
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+          - IndexName: GSI3PK
+            KeySchema:
+              - AttributeName: GSI3PK
+                KeyType: HASH
+              - AttributeName: GSI3SK
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+        Tags:
+          - Key: Stage
+            Value: !Ref Environment
+          - Key: Owner
+            Value: !Ref Owner
+          - Key: OwnerEmail
+            Value: !Ref OwnerEmail
+        TimeToLiveSpecification:
+          Enabled: true
+          AttributeName: TTL
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
