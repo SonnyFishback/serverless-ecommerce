@@ -11,9 +11,13 @@ plugins:
   # - 'serverless-domain-manager' #TODO: add custom domain for api.
 
 functions:
-  api:
-    handler: 'index.handler'
-    events:
-      - httpApi:
-          path: '/'
-          method: 'get'
+
+  RegistrationFormSubmitted:
+    handler: 'src/functions/auth/RegistrationFormSubmitted/RegistrationFormSubmitted.handler'
+
+  # api:
+  #   handler: 'index.handler'
+  #   events:
+  #     - httpApi:
+  #         path: '/'
+  #         method: 'get'
