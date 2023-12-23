@@ -1,18 +1,20 @@
 export const handler = async (event) => {
-    return {
-      statusCode: 200,
-      body: JSON.stringify(
-        {
-         products: [{
-          id: 1,
-          name: "Product 1",
-          price: 100,
-          description: "Product 1 description"
-         }]
-        },
-        null,
-        2
-      ),
-    };
-  };
+  try {
+    if (!event?.body) {
+      throw new Error('No body in request');
+    }
+
+    let { body } = event;
+    body = JSON.parse(body);
+
+    if (!body.email || !body.password) {
+      throw new Error('Missing email or password');
+    }
+
+    const { email, password } = body;
+
+  } catch (error) {
+    console.error(error);
+  }
+};
   

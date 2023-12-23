@@ -8,6 +8,19 @@
   </head>
   <body>
    <a href="./src/pages/home/home.html">Go Home</a>
-    <script type="module" src="/src/main.ts"></script>
+
+    <form id="registration-form" method="post">
+      <label>
+        Email:
+        <input type="email" name="email" id="email"/>
+      </label>
+      <label>
+        Password:
+        <input type="password" name="password" id="password"/>
+      </label>
+      <button type="submit">Register</button>
+    </form>
+
+    <script type="module" src="./src/main.ts"></script>
   </body>
 </html>
