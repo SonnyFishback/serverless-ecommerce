@@ -14,10 +14,43 @@ functions:
 
   RegistrationFormSubmitted:
     handler: 'src/functions/auth/RegistrationFormSubmitted/RegistrationFormSubmitted.handler'
+    description: |
+      This function is invoked when a user a user submits the registration form.
 
-  # api:
-  #   handler: 'index.handler'
-  #   events:
-  #     - httpApi:
-  #         path: '/'
-  #         method: 'get'
+      - Validates the form data is valid.
+      - Validates the user is able to be registered (email is not already in use).
+      - Securely stores the users credentials in the database.
+    events:
+      - httpApi:
+          path: '/register'
+          method: 'post'
+
+  LoginFormSubmitted:
+    handler: 'src/functions/auth/LoginFormSubmitted/LoginFormSubmitted.handler'
+    description: |
+      This function is invoked when a user submits the login form.
+
+      - Validates the form data is valid.
+      - Validates the user exists.
+      - Generates and returns a JWT token or error message.
+    events:
+      - httpApi:
+          path: '/login'
+          method: 'post'
+
+    # RefreshTokenRequested:
+    #   handler: 'src/functions/auth/'
+    #   description: |
+    #     This function is invoked when a user requests a new JWT token.
+
+    #     - Validates the request is valid.
+    #     - Validates the user exists.
+    #     - Validates the user is able to log in.
+    #     - Validates if the provided credentials match stored credentials.
+    #     - Generates and returns a JWT token or error message.
+        
+    #   events:
+    #     - httpApi:
+    #         path: '/refresh'
+    #         method: 'post'
+  
