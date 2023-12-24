@@ -9,6 +9,7 @@ provider:
 
 plugins:
   - 'serverless-esbuild'
+  - 'serverless-iamroles'  # the popular plugin 'serverless-iam-roles-per-function' has been abandoned, using this forked version for now. Will audit in a few months..
   # - 'serverless-domain-manager' #TODO: add custom domain for api.
 
 resources:
@@ -29,6 +30,12 @@ functions:
       - httpApi:
           path: '/register'
           method: 'post'
+    iamRoleStatements: # TODO: Update iam role to follow "least privileged" best practice.
+      - Effect: 'Allow'
+        Action:
+          - 'dynamodb:*'
+        Resource: '*'
+  
 
   LoginFormSubmitted:
     handler: 'src/functions/auth/LoginFormSubmitted/LoginFormSubmitted.handler'
