@@ -49,7 +49,11 @@ functions:
       - httpApi:
           path: '/login'
           method: 'post'
-
+    iamRoleStatements: # TODO: Update iam role to follow "least privileged" best practice.
+      - Effect: 'Allow'
+        Action:
+          - 'dynamodb:*'
+        Resource: '*'
     # RefreshTokenRequested:
     #   handler: 'src/functions/auth/'
     #   description: |

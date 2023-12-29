@@ -1,6 +1,6 @@
 import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import bcrypt from 'bcryptjs';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 const db = new DynamoDBClient({ region: "us-east-1" });
 
@@ -40,13 +40,13 @@ export const handler = async (event) => {
  * Creates a new user record in the database.
  */
 const createUser = async (email: string, password: string) => {
-  const uuid = uuidv4();
+  // const uuid = uuidv4(); // Generate a unique UUID for the user and use that as the PK
   const encryptedPassword = await bcrypt.hash(password, 10);
   const data = {
     TableName: "prod-snbx.link-table",
     Item: {
-      PK: { S: `USER#${uuid}` },
-      SK: { S: `USER#${uuid}` },
+      PK: { S: `USER#${email}` },
+      SK: { S: email },
       Attributes: {
         M: {
           email: { S: email },

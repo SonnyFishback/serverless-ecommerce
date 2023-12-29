@@ -7,8 +7,10 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.478.0",
     "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.5",
     "@types/uuid": "^9.0.7",
     "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
     "uuid": "^9.0.1"
   }
 }
